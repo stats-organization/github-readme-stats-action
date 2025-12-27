@@ -9,17 +9,25 @@ name: Update README cards
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * *" # Runs once daily at midnight
   workflow_dispatch:
 
+<<<<<<< HEAD
 permissions:
   contents: write
+=======
+permissions: {}
+>>>>>>> 2fd6dae (docs: refine example action)
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Generate stats card
         uses: readme-tools/github-readme-stats-action@v1
