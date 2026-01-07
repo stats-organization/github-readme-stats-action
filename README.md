@@ -12,12 +12,7 @@ on:
     - cron: "0 0 * * *" # Runs once daily at midnight
   workflow_dispatch:
 
-<<<<<<< HEAD
-permissions:
-  contents: write
-=======
 permissions: {}
->>>>>>> 2fd6dae (docs: refine example action)
 
 jobs:
   build:
