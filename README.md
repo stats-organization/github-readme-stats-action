@@ -72,7 +72,7 @@ This action is a recommended deployment option. You can also deploy on Vercel or
 - `card` (required): Card type. Supported: `stats`, `top-langs`, `pin`, `wakatime`, `gist`.
 - `options`: Card options as a query string (`key=value&...`) or JSON. If `username` is omitted, the action uses the repository owner.
 - `path`: Output path for the SVG file. Defaults to `profile/<card>.svg`.
-- `token`: GitHub token (PAT or `GITHUB_TOKEN`). For private repo stats, use a [PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) with `repo` and `read:user` scopes.
+- `token`: GitHub token (PAT or `GITHUB_TOKEN`). For private repo stats, use a [PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) with `repo` and `read:user` scopes. For any gist, use a PAT with `gist` scope.
 
 ## Examples
 
@@ -109,7 +109,7 @@ Gist example:
 with:
   card: gist
   options: id=0123456789abcdef
-  token: ${{ secrets.GITHUB_TOKEN }}
+  token: ${{ secrets.PAT }}
 ```
 
 JSON options example:
