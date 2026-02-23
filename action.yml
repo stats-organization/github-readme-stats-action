@@ -16,7 +16,7 @@ inputs:
   token:
     description: GitHub token (PAT or GITHUB_TOKEN).
     required: false
-    default: ""
+    default: ${{ github.token }}
 outputs:
   path:
     description: Path where the SVG file was written.
