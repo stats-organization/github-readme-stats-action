@@ -37,7 +37,6 @@ const runCard = (card, options, output) =>
 
 const assertSvg = async (filePath) => {
   const data = await readFile(filePath, "utf8");
-  console.log(data);
   expect(data).toContain("<svg");
 };
 
