@@ -1,6 +1,8 @@
 import core from "@actions/core";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+
+import { getInput, info, setFailed, setOutput, warning } from "@actions/core";
 import statsApi from "github-readme-stats/api/index.js";
 import repoApi from "github-readme-stats/api/pin.js";
 import topLangsApi from "github-readme-stats/api/top-langs.js";
@@ -32,14 +34,16 @@ const normalizeOptions = (options) => {
  * @returns {Record<string, string>} Parsed options.
  */
 const parseOptions = (value) => {
-  if (!value) return {};
+  if (!value) {
+    return {};
+  }
 
   const trimmed = value.trim();
   const options = {};
   if (trimmed.startsWith("{")) {
     try {
       Object.assign(options, JSON.parse(trimmed));
-    } catch (error) {
+    } catch {
       throw new Error("Invalid JSON in options.");
     }
   } else {
@@ -77,7 +81,7 @@ const cardHandlers = {
 const validateCardOptions = (card, query, repoOwner) => {
   if (!query.username && repoOwner) {
     query.username = repoOwner;
-    core.warning("username not provided; defaulting to repository owner.");
+    warning("username not provided; defaulting to repository owner.");
   }
   switch (card) {
     case "stats":
@@ -103,9 +107,9 @@ const validateCardOptions = (card, query, repoOwner) => {
 };
 
 const run = async () => {
-  const card = core.getInput("card", { required: true }).toLowerCase();
-  const optionsInput = core.getInput("options") || "";
-  const outputPathInput = core.getInput("path");
+  const card = getInput("card", { required: true }).toLowerCase();
+  const optionsInput = getInput("options") || "";
+  const outputPathInput = getInput("path");
 
   const handler = cardHandlers[card];
   if (!handler) {
@@ -136,10 +140,10 @@ const run = async () => {
   }
 
   await writeFile(outputPath, svg, "utf8");
-  core.info(`Wrote ${outputPath}`);
-  core.setOutput("path", outputPathValue);
+  info(`Wrote ${outputPath}`);
+  setOutput("path", outputPathValue);
 };
 
 run().catch((error) => {
-  core.setFailed(error instanceof Error ? error.message : String(error));
+  setFailed(error instanceof Error ? error.message : String(error));
 });

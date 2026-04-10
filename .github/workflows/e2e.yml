@@ -23,4 +23,3 @@ jobs:
         run: npm test
         env:
           PAT_1: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY_OWNER: "rickstaa"
