@@ -1,0 +1,4 @@
+minimumReleaseAge: 10080
+
+onlyBuiltDependencies:
+  - "github-readme-stats"

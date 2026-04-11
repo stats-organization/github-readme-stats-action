@@ -50,7 +50,7 @@ afterAll(async () => {
   }
 });
 
-describe("generate cards locally", () => {
+describe.concurrent("generate cards locally", () => {
   test("generated stats card contains svg", async () => {
     const statsPath = path.join(buildDir, "stats.svg");
     await runCard("stats", `username=${repoOwner}&show_icons=true`, statsPath);
