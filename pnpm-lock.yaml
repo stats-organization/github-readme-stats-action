@@ -12,8 +12,8 @@ importers:
         specifier: ^2.0.1
         version: 2.0.3
       github-readme-stats:
-        specifier: github:readme-tools/github-readme-stats
-        version: git+https://git@github.com:readme-tools/github-readme-stats.git#d79be7a9fd50ce38aef89306c8a1185fc0443bc7
+        specifier: github:stats-organization/github-readme-stats
+        version: https://codeload.github.com/stats-organization/github-readme-stats/tar.gz/d79be7a9fd50ce38aef89306c8a1185fc0443bc7
     devDependencies:
       husky:
         specifier: 9.0.11
@@ -658,8 +658,8 @@ packages:
   get-tsconfig@4.13.7:
     resolution: {integrity: sha512-7tN6rFgBlMgpBML5j8typ92BKFi2sFQvIdpAqLA2beia5avZDrMs0FLZiM5etShWq5irVyGcGMEA1jcDaK7A/Q==}
 
-  github-readme-stats@git+https://git@github.com:readme-tools/github-readme-stats.git#d79be7a9fd50ce38aef89306c8a1185fc0443bc7:
-    resolution: {commit: d79be7a9fd50ce38aef89306c8a1185fc0443bc7, repo: git@github.com:readme-tools/github-readme-stats.git, type: git}
+  github-readme-stats@https://codeload.github.com/stats-organization/github-readme-stats/tar.gz/d79be7a9fd50ce38aef89306c8a1185fc0443bc7:
+    resolution: {tarball: https://codeload.github.com/stats-organization/github-readme-stats/tar.gz/d79be7a9fd50ce38aef89306c8a1185fc0443bc7}
     version: 1.0.0
     engines: {node: '>=22'}
 
@@ -1642,7 +1642,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  github-readme-stats@git+https://git@github.com:readme-tools/github-readme-stats.git#d79be7a9fd50ce38aef89306c8a1185fc0443bc7:
+  github-readme-stats@https://codeload.github.com/stats-organization/github-readme-stats/tar.gz/d79be7a9fd50ce38aef89306c8a1185fc0443bc7:
     dependencies:
       axios: 1.14.0
       dotenv: 17.4.0
