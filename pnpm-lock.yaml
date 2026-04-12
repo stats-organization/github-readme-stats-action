@@ -13,7 +13,7 @@ importers:
         version: 2.0.3
       github-readme-stats:
         specifier: github:readme-tools/github-readme-stats
-        version: git+https://github.com/readme-tools/github-readme-stats.git#d79be7a9fd50ce38aef89306c8a1185fc0443bc7
+        version: git+https://git@github.com:readme-tools/github-readme-stats.git#d79be7a9fd50ce38aef89306c8a1185fc0443bc7
     devDependencies:
       husky:
         specifier: 9.0.11
@@ -25,8 +25,8 @@ importers:
         specifier: 15.2.7
         version: 15.2.7
       prettier:
-        specifier: 3.3.3
-        version: 3.3.3
+        specifier: 3.8.1
+        version: 3.8.1
       vitest:
         specifier: 4.1.2
         version: 4.1.2(vite@8.0.3(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(jiti@2.6.1)(yaml@2.8.3))
@@ -658,8 +658,8 @@ packages:
   get-tsconfig@4.13.7:
     resolution: {integrity: sha512-7tN6rFgBlMgpBML5j8typ92BKFi2sFQvIdpAqLA2beia5avZDrMs0FLZiM5etShWq5irVyGcGMEA1jcDaK7A/Q==}
 
-  github-readme-stats@git+https://github.com/readme-tools/github-readme-stats.git#d79be7a9fd50ce38aef89306c8a1185fc0443bc7:
-    resolution: {commit: d79be7a9fd50ce38aef89306c8a1185fc0443bc7, repo: https://github.com/readme-tools/github-readme-stats.git, type: git}
+  github-readme-stats@git+https://git@github.com:readme-tools/github-readme-stats.git#d79be7a9fd50ce38aef89306c8a1185fc0443bc7:
+    resolution: {commit: d79be7a9fd50ce38aef89306c8a1185fc0443bc7, repo: git@github.com:readme-tools/github-readme-stats.git, type: git}
     version: 1.0.0
     engines: {node: '>=22'}
 
@@ -920,8 +920,8 @@ packages:
     resolution: {integrity: sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg==}
     engines: {node: ^10 || ^12 || >=14}
 
-  prettier@3.3.3:
-    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+  prettier@3.8.1:
+    resolution: {integrity: sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1642,7 +1642,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  github-readme-stats@git+https://github.com/readme-tools/github-readme-stats.git#d79be7a9fd50ce38aef89306c8a1185fc0443bc7:
+  github-readme-stats@git+https://git@github.com:readme-tools/github-readme-stats.git#d79be7a9fd50ce38aef89306c8a1185fc0443bc7:
     dependencies:
       axios: 1.14.0
       dotenv: 17.4.0
@@ -1917,7 +1917,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  prettier@3.3.3: {}
+  prettier@3.8.1: {}
 
   proxy-from-env@2.1.0: {}
 
