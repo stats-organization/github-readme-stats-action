@@ -1,18 +1,16 @@
-import { mkdtemp, rm, readFile } from "node:fs/promises";
-import path from "node:path";
-import os from "node:os";
-import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
-import { jest, test, expect, beforeAll, afterAll } from "@jest/globals";
+import { mkdtemp, readFile, rm } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-jest.setTimeout(60_000);
+import { afterAll, beforeAll, describe, expect, test } from "vitest";
 
 const rootDir = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
 );
 const repoOwner = process.env.GITHUB_REPOSITORY_OWNER ?? "rickstaa";
-const hasPat = Boolean(process.env.PAT_1);
 let buildDir;
 
 const runCard = (card, options, output) =>
@@ -43,9 +41,6 @@ const assertSvg = async (filePath) => {
 };
 
 beforeAll(async () => {
-  if (!hasPat) {
-    return;
-  }
   buildDir = await mkdtemp(path.join(os.tmpdir(), "grs-action-"));
 });
 
@@ -55,32 +50,39 @@ afterAll(async () => {
   }
 });
 
-const e2eTest = hasPat ? test : test.skip;
+describe.concurrent("generate cards locally", () => {
+  test("generated stats card contains svg", async () => {
+    const statsPath = path.join(buildDir, "stats.svg");
+    await runCard("stats", `username=${repoOwner}&show_icons=true`, statsPath);
+    await assertSvg(statsPath);
+  });
 
-e2eTest("generates cards locally", async () => {
-  const statsPath = path.join(buildDir, "stats.svg");
-  const langsPath = path.join(buildDir, "top-langs.svg");
-  const pinPath = path.join(
-    buildDir,
-    "pin-readme-tools-github-readme-stats.svg",
-  );
-  const wakatimePath = path.join(buildDir, "wakatime.svg");
+  test("generated top-langs card contains svg", async () => {
+    const langsPath = path.join(buildDir, "top-langs.svg");
+    await runCard(
+      "top-langs",
+      `username=${repoOwner}&layout=compact&langs_count=6`,
+      langsPath,
+    );
+    await assertSvg(langsPath);
+  });
 
-  await runCard("stats", `username=${repoOwner}&show_icons=true`, statsPath);
-  await runCard(
-    "top-langs",
-    `username=${repoOwner}&layout=compact&langs_count=6`,
-    langsPath,
-  );
-  await runCard(
-    "pin",
-    "username=readme-tools&repo=github-readme-stats",
-    pinPath,
-  );
-  await runCard("wakatime", "username=MNZ&layout=compact", wakatimePath);
+  test("generated pin card contains svg", async () => {
+    const pinPath = path.join(
+      buildDir,
+      "pin-readme-tools-github-readme-stats.svg",
+    );
+    await runCard(
+      "pin",
+      "username=readme-tools&repo=github-readme-stats",
+      pinPath,
+    );
+    await assertSvg(pinPath);
+  });
 
-  await assertSvg(statsPath);
-  await assertSvg(langsPath);
-  await assertSvg(pinPath);
-  await assertSvg(wakatimePath);
+  test("generated wakatime card contains svg", async () => {
+    const wakatimePath = path.join(buildDir, "wakatime.svg");
+    await runCard("wakatime", "username=MNZ&layout=compact", wakatimePath);
+    await assertSvg(wakatimePath);
+  });
 });

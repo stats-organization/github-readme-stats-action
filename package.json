@@ -3,28 +3,32 @@
   "version": "0.1.0",
   "description": "Generate GitHub Readme Stats cards in GitHub Actions",
   "type": "module",
+  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319",
+  "license": "MIT",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
+    "test": "vitest",
+    "prepare": "husky",
     "format": "prettier --write .",
-    "lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "format:check": "prettier --check .",
+    "lint:knip": "knip"
   },
   "dependencies": {
     "@actions/core": "^2.0.1",
     "github-readme-stats": "github:readme-tools/github-readme-stats"
   },
   "devDependencies": {
-    "husky": "^9.0.11",
-    "jest": "^29.7.0",
-    "lint-staged": "^15.2.7",
-    "prettier": "^3.3.3"
+    "husky": "9.0.11",
+    "knip": "6.2.0",
+    "lint-staged": "15.2.7",
+    "prettier": "3.3.3",
+    "vitest": "4.1.2"
   },
   "lint-staged": {
-    "*.{js,json,md,yml,yaml}": "prettier --write"
+    "*.{js,jsx,ts,tsx,css,json,jsonc,yaml,yml}": "prettier --write"
   },
   "engines": {
     "node": ">=22"
-  },
-  "license": "MIT"
+  }
 }

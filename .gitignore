@@ -1,5 +1,11 @@
 node_modules
+
+# OS
 .DS_Store
-.env
-.vscode
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
 *.code-workspace
