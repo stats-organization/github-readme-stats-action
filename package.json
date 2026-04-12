@@ -15,7 +15,7 @@
     "lint:knip": "knip"
   },
   "dependencies": {
-    "@actions/core": "^2.0.1",
+    "@actions/core": "^3.0.0",
     "github-readme-stats": "github:stats-organization/github-readme-stats"
   },
   "devDependencies": {
