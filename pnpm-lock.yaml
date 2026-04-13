@@ -19,8 +19,8 @@ importers:
         specifier: 9.0.11
         version: 9.0.11
       knip:
-        specifier: 6.2.0
-        version: 6.2.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
+        specifier: 6.3.0
+        version: 6.3.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
       lint-staged:
         specifier: 16.4.0
         version: 16.4.0
@@ -686,8 +686,8 @@ packages:
     resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
     hasBin: true
 
-  knip@6.2.0:
-    resolution: {integrity: sha512-4OMUMJARvNble8e8TeFv12flp4fKzAITrQec1eKO4g2eA4HnNqEa8CXy2UOPLjuYuAETpe0N0r25jF9yY9FLig==}
+  knip@6.3.0:
+    resolution: {integrity: sha512-g6dVPoTw6iNm3cubC5IWxVkVsd0r5hXhTBTbAGIEQN53GdA2ZM/slMTPJ7n5l8pBebNQPHpxjmKxuR4xVQ2/hQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
@@ -1567,7 +1567,7 @@ snapshots:
 
   jiti@2.6.1: {}
 
-  knip@6.2.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2):
+  knip@6.3.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2):
     dependencies:
       '@nodelib/fs.walk': 1.2.8
       fast-glob: 3.3.3
