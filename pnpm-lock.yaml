@@ -16,8 +16,8 @@ importers:
         version: https://codeload.github.com/stats-organization/github-readme-stats/tar.gz/d79be7a9fd50ce38aef89306c8a1185fc0443bc7
     devDependencies:
       husky:
-        specifier: 9.0.11
-        version: 9.0.11
+        specifier: 9.1.7
+        version: 9.1.7
       knip:
         specifier: 6.2.0
         version: 6.2.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
@@ -661,8 +661,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  husky@9.0.11:
-    resolution: {integrity: sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==}
+  husky@9.1.7:
+    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -1551,7 +1551,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  husky@9.0.11: {}
+  husky@9.1.7: {}
 
   is-extglob@2.1.1: {}
 
