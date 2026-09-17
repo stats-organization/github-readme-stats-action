@@ -65,7 +65,7 @@ Then embed from your profile README:
 
 ## Deployment options
 
-This action is a recommended deployment option. You can also use [our public GitHub-Stats-Extended instance](https://github.com/stats-organization/github-stats-extended#quick-start) or [deploy one yourself](https://github.com/stats-organization/github-stats-extended/blob/master/docs/deploy.md#self-hosted-on-vercel).
+This action is a recommended deployment option. You can also use [our public GitHub-Stats-Extended instance](https://github.com/stats-organization/github-stats-extended#quick-start) or [deploy one yourself](https://github-stats-extended.vercel.app/frontend/docs/deploy/#self-hosted-on-vercel).
 
 ## Inputs
 
