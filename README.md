@@ -80,6 +80,9 @@ This action is a recommended deployment option. You can also use [our public Git
 ## Outputs
 
 - `path`: Path where the SVG file was written, relative to the workspace.
+- `error_type`: Error classification from the core library (e.g. `MAX_RETRY`). Empty when no error occurred, fail_on_error=true or error type is missing.
+- `error_message`: Error message from the core library. Empty when no error occurred or fail_on_error=true.
+- `error_secondary_message`: Secondary error message with additional context (e.g. remediation hints). Empty when not available, fail_on_error=true or secondary message is missing.
 
 ## Examples
 

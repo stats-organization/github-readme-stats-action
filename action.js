@@ -170,10 +170,30 @@ export const run = async () => {
   // starting with "error" and a "Something went wrong" SVG. When fail_on_error
   // is enabled, fail the action so the broken card is never written or committed.
   // Older core versions may not return a `status`, so this is a no-op for them.
-  if (failOnError && String(result?.status).startsWith("error")) {
-    throw new Error(
-      `Card generation failed while fetching data (${result.status}).`,
-    );
+  if (String(result?.status).startsWith("error")) {
+    setOutput("error_type", result.error?.type ?? "");
+    setOutput("error_message", result.error?.message ?? "");
+    setOutput("error_secondary_message", result.error?.secondaryMessage ?? "");
+
+    let message;
+    if (result.error?.message && result.error?.secondaryMessage) {
+      message = `${result.error.message} - ${result.error.secondaryMessage}`;
+    } else {
+      message =
+        result.error?.message ??
+        result.error?.secondaryMessage ??
+        result.status;
+    }
+    if (result.error?.type) {
+      message += ` [${result.error.type}]`;
+    }
+    message = "Card generation failed: " + message;
+
+    if (failOnError) {
+      throw new Error(message);
+    } else {
+      warning(message);
+    }
   }
 
   if (!svg) {
