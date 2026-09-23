@@ -46,9 +46,7 @@ const installCorePackage = async (version) => {
 
     return installDir;
   } catch (error) {
-    throw new Error(
-      `Failed to install ${CORE_PACKAGE_NAME}@${version}: ${error}`,
-    );
+    throw new Error(`Failed to install ${packageSpec}: ${error}`);
   }
 };
 
