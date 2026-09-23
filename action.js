@@ -147,7 +147,7 @@ export const run = async () => {
     // repo cards may use `username` even though it's not required
     query.username = process.env.GITHUB_REPOSITORY_OWNER;
     if (cardDef.requires === "username") {
-      warning("username not provided; defaulting to repository owner.");
+      info("username not provided; defaulting to repository owner.");
     }
   }
 
