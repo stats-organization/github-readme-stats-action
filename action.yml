@@ -33,6 +33,15 @@ outputs:
   path:
     description: Path where the SVG file was written.
     value: ${{ steps.generate.outputs.path }}
+  error_type:
+    description: Error classification from the core library (e.g. MAX_RETRY). Empty when no error occurred or error type is missing.
+    value: ${{ steps.generate.outputs.error_type }}
+  error_message:
+    description: Error message from the core library. Empty when no error occurred.
+    value: ${{ steps.generate.outputs.error_message }}
+  error_secondary_message:
+    description: Secondary error message with additional context. Empty when no error occurred or secondary message is missing.
+    value: ${{ steps.generate.outputs.error_secondary_message }}
 runs:
   using: composite
   steps:
