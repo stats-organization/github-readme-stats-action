@@ -121,6 +121,16 @@ describe.concurrent("generate cards locally", () => {
     expect(data).toContain("Something went wrong");
   });
 
+  test("rejects invalid max_star_pages input", async () => {
+    const invalidPagesPath = path.join(buildDir, "invalid-pages.svg");
+
+    await expect(
+      runCard("stats", `username=${repoOwner}`, invalidPagesPath, "", {
+        INPUT_MAX_STAR_PAGES: "all",
+      }),
+    ).rejects.toThrow();
+  });
+
   test("rejects invalid core_version input before install", async () => {
     const invalidVersionPath = path.join(buildDir, "invalid-version.svg");
 
@@ -134,6 +144,35 @@ describe.concurrent("generate cards locally", () => {
     ).rejects.toThrow();
   });
 });
+
+describe("max_star_pages", () => {
+  const readStars = async (filePath) => {
+    const data = await readFile(filePath, "utf8");
+    const match = data.match(/data-testid="stars"\s*>([^<]+)</);
+    return Number(match?.[1].replace(/\D/g, ""));
+  };
+
+  // Needs real API data, so it only runs where a token is available (e.g. CI).
+  test.skipIf(!process.env.PAT_1)(
+    "counts stars beyond the first page of repositories",
+    async () => {
+      // sindresorhus has well over 200 starred repos, so a second page always adds stars.
+      const options = "username=sindresorhus&number_format=long";
+      const onePagePath = path.join(buildDir, "stars-one-page.svg");
+      const twoPagesPath = path.join(buildDir, "stars-two-pages.svg");
+
+      await runCard("stats", options, onePagePath);
+      await runCard("stats", options, twoPagesPath, "", {
+        INPUT_MAX_STAR_PAGES: "2",
+      });
+
+      const onePage = await readStars(onePagePath);
+      const twoPages = await readStars(twoPagesPath);
+      expect(onePage).toBeGreaterThan(0);
+      expect(twoPages).toBeGreaterThan(onePage);
+    },
+  );
+}, 30_000);
 
 describe("include requested core package versions", () => {
   test("use core package version 'v2'", async () => {

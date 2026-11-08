@@ -29,6 +29,12 @@ inputs:
       to "true" to fail the action on a broken card.
     required: false
     default: "false"
+  max_star_pages:
+    description: >-
+      Maximum pages of 100 repositories to fetch when counting stars. 0 fetches
+      every page.
+    required: false
+    default: "10"
 outputs:
   path:
     description: Path where the SVG file was written.
@@ -77,6 +83,7 @@ runs:
         INPUT_PATH: ${{ inputs.path }}
         INPUT_CORE_VERSION: ${{ inputs.core_version }}
         INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
+        INPUT_MAX_STAR_PAGES: ${{ inputs.max_star_pages }}
         PAT_1: ${{ inputs.token || github.token }}
 branding:
   icon: bar-chart-2

@@ -20,6 +20,20 @@ const validateCoreVersion = (value) => {
 };
 
 /**
+ * Validate the max_star_pages input and convert it to core's FETCH_MULTI_PAGE_STARS value.
+ * @param {string} value Input value, already trimmed by getInput.
+ * @returns {string} "true" for 0 (every page), the page limit, or "" when unset.
+ */
+export const parseMaxStarPages = (value) => {
+  if (!/^(0|[1-9]\d*)?$/.test(value)) {
+    throw new Error(
+      "max_star_pages must be 0 (every page) or a positive integer.",
+    );
+  }
+  return value === "0" ? "true" : value;
+};
+
+/**
  * Install the requested core package into an isolated temporary directory.
  * @param {string} version Package version.
  * @returns {Promise<string>} Directory containing the installed package.
@@ -124,10 +138,16 @@ export const run = async () => {
   const outputPathInput = getInput("path");
   const coreVersion = validateCoreVersion(getInput("core_version"));
   const failOnError = /^(true|1|yes)$/i.test(getInput("fail_on_error"));
+  const maxStarPages = parseMaxStarPages(getInput("max_star_pages"));
 
   const cardDef = CARDS[card];
   if (!cardDef) {
     throw new Error(`Unsupported card type: ${card}`);
+  }
+
+  // The core package reads its config from the environment when first imported.
+  if (maxStarPages) {
+    process.env.FETCH_MULTI_PAGE_STARS = maxStarPages;
   }
 
   const coreModule = await loadCoreModule(coreVersion);

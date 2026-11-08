@@ -76,6 +76,7 @@ This action is a recommended deployment option. You can also use [our public Git
 - `core_version`: Version of [GitHub Stats Extended](https://github.com/stats-organization/github-stats-extended) to use internally. When omitted, the action uses the latest 2.x.x version.
 - `fail_on_error`: Fail the action when data fetching fails (e.g. a GitHub API rate limit) instead of writing the "Something went wrong" error card.\
   Defaults to `false` for backwards compatibility.
+- `max_star_pages`: Maximum pages of 100 repositories to fetch when counting stars. Defaults to `10` (1,000 repositories). `0` fetches every page. Fetching stops at the first repository without stars.
 
 ## Outputs
 
