@@ -78,6 +78,7 @@ runs:
         INPUT_CORE_VERSION: ${{ inputs.core_version }}
         INPUT_FAIL_ON_ERROR: ${{ inputs.fail_on_error }}
         PAT_1: ${{ inputs.token || github.token }}
+        FETCH_MULTI_PAGE_STARS: ${{ env.FETCH_MULTI_PAGE_STARS || '10' }}
 branding:
   icon: bar-chart-2
   color: blue
