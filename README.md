@@ -1,6 +1,6 @@
 # GitHub Readme Stats Action
 
-Generate [GitHub Readme Stats](https://github.com/stats-organization/github-readme-stats) cards in your GitHub Actions workflow, commit them to your profile repository, and embed them directly from there.
+Generate [GitHub Readme Stats](https://github.com/stats-organization/github-stats-extended) cards in your GitHub Actions workflow, commit them to your profile repository, and embed them directly from there.
 
 ## Quick start
 
@@ -76,6 +76,17 @@ This action is a recommended deployment option. You can also use [our public Git
 - `core_version`: Version of [GitHub Stats Extended](https://github.com/stats-organization/github-stats-extended) to use internally. When omitted, the action uses the latest 2.x.x version.
 - `fail_on_error`: Fail the action when data fetching fails (e.g. a GitHub API rate limit) instead of writing the "Something went wrong" error card.\
   Defaults to `false` for backwards compatibility.
+- Any [environment variables](https://github-stats-extended.vercel.app/frontend/docs/deploy/#available-environment-variables) are passed through to the underlying GitHub-Stats-Extended library. Most importantly, `FETCH_MULTI_PAGE_STARS` controls how many pages of repositories are fetched when calculating total stars. It defaults to 10. For example:
+  ```yaml
+  - name: Generate stats card
+    uses: stats-organization/github-readme-stats-action@v2
+    env:
+      FETCH_MULTI_PAGE_STARS: "20"
+    with:
+      card: stats
+      options: username=${{ github.repository_owner }}&show_icons=true
+      path: profile/stats.svg
+  ```
 
 ## Outputs
 
